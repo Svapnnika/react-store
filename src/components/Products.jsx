@@ -5,13 +5,17 @@ import { useContext } from "react";
 export default function Products() {
   const { user, products, cart, setCart } = useContext(appContext);
   const addToCart = (id) => {
-    !cart[id] && setCart({ ...cart, [id]: 1 });
+    setCart({ ...cart, [id]: (cart[id] || 0) + 1 });
   };
   const increment = (id) => {
     setCart({ ...cart, [id]: cart[id] + 1 });
   };
   const decrement = (id) => {
-    setCart({ ...cart, [id]: cart[id] - 1 });
+    if (cart[id] > 1) {
+      setCart({ ...cart, [id]: cart[id] - 1 });
+    } else {
+      setCart({ ...cart, [id]: 0 });
+    }
   };
   return (
     <>
@@ -22,7 +26,7 @@ export default function Products() {
             <h3>{value.name}</h3>
             <p>{value.desc}</p>
             <h4>{value.price}</h4>
-            {cart[value._id] > 0 ? (
+            {cart[value._id] && cart[value._id] > 0 ? (
               <div>
                 <button onClick={() => decrement(value._id)}>-</button>
                 {cart[value._id]}

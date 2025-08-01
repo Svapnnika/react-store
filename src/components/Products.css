@@ -6,7 +6,7 @@
 .App-Products-Box{
     padding: 5px;
     margin: 15px;
-    border: 1px solid gray;
+    border: 1px solid rgb(30, 24, 24);
     border-radius: 2px;
     font-size: 20px;
 }

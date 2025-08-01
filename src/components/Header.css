@@ -1,7 +1,44 @@
 .App-Header-Row{
     display: flex;
     justify-content: space-between;
-    background-color: lightblue;
-    padding: 5px;
+    align-items: center;
+    background-color: rgb(126, 150, 205);
+    padding: 25px 20px;
     font-size: 20px;
+}
+
+.App-Header-Row h2 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.title-icon {
+    font-size: 24px;
+    display: inline-block;
+}
+
+.App-Header-Row div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.App-Header-Row a {
+    text-decoration: none;
+    color: #181818;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.App-Header-Row a:hover {
+    color: #007bff;
+}
+
+.nav-icon {
+    font-size: 18px;
+    display: inline-block;
 }
