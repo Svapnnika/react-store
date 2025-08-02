@@ -3,30 +3,39 @@ import "./Products.css";
 import { appContext } from "../App";
 import { useContext } from "react";
 export default function Products() {
-  const { user, products, cart, setCart } = useContext(appContext);
-  const addToCart = (id) => {
-    setCart({ ...cart, [id]: (cart[id] || 0) + 1 });
-  };
-  const increment = (id) => {
-    setCart({ ...cart, [id]: cart[id] + 1 });
-  };
-  const decrement = (id) => {
-    if (cart[id] > 1) {
-      setCart({ ...cart, [id]: cart[id] - 1 });
-    } else {
-      setCart({ ...cart, [id]: 0 });
-    }
-  };
+  const { products } = useContext(appContext);
+  // const addToCart = (id) => {
+  //   setCart({ ...cart, [id]: (cart[id] || 0) + 1 });
+  // };
+  // const increment = (id) => {
+  //   setCart({ ...cart, [id]: cart[id] + 1 });
+  // };
+  // const decrement = (id) => {
+  //   if (cart[id] > 1) {
+  //     setCart({ ...cart, [id]: cart[id] - 1 });
+  //   } else {
+  //     setCart({ ...cart, [id]: 0 });
+  //   }
+  // };
   return (
     <>
       <div className="App-Products-Row">
         {products.map((value) => (
           <div key={value._id} className="App-Products-Box">
-            <img src={value.url} />
+            <img 
+              src={value.imgUrl || value.url || 'https://via.placeholder.com/350x350?text=No+Image'} 
+              alt={value.name || 'Product Image'}
+              className="product-image"
+              onError={(e) => {
+                e.target.src = 'https://via.placeholder.com/350x350?text=No+Image';
+                onclick(e);
+              }}
+            />
             <h3>{value.name}</h3>
             <p>{value.desc}</p>
-            <h4>{value.price}</h4>
-            {cart[value._id] && cart[value._id] > 0 ? (
+            <h4>${value.price}</h4>
+            <button>Shop Now</button>
+            {/* {cart[value._id] && cart[value._id] > 0 ? (
               <div>
                 <button onClick={() => decrement(value._id)}>-</button>
                 {cart[value._id]}
@@ -34,7 +43,7 @@ export default function Products() {
               </div>
             ) : (
               <button onClick={() => addToCart(value._id)}>Add to Cart</button>
-            )}
+            )} */}
           </div>
         ))}
       </div>
