@@ -24,7 +24,6 @@ export default function Footer() {
           <ul>
             <li>Eco-friendly, handmade products</li>
             <li>Verified carbon offset tracking</li>
-            <li>Secure blockchain-based payments</li>
             <li>Supports sustainability goals</li>
             <li>Authentic and curated marketplace</li>
           </ul>
@@ -43,7 +42,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        © 2025 Ceramic Carbon Marketplace. All rights reserved.
+        © 2025 Ceramic Marketplace. All rights reserved.
       </div>
     </footer>
   );

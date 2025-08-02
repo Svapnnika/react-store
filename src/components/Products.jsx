@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import "./Products.css";
 import { appContext } from "../App";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Products() {
   const { products } = useContext(appContext);
+  const navigate = useNavigate();
+   const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+  useEffect(() => {
+    document.body.className = darkMode ? "dark-theme" : "light-theme";
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+  const handleImageClick = (productId) => {
+    navigate(`/product/${productId}`);
+  };
   // const addToCart = (id) => {
   //   setCart({ ...cart, [id]: (cart[id] || 0) + 1 });
   // };
@@ -19,16 +31,31 @@ export default function Products() {
   // };
   return (
     <>
+     <div style={{ textAlign: "right", margin: "1rem" }}>
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          style={{
+            padding: "8px 12px",
+            backgroundColor: darkMode ? "#444" : "#eee",
+            color: darkMode ? "#fff" : "#000",
+            border: "none",
+            borderRadius: "6px",
+            cursor: "pointer",
+          }}
+        >
+          {darkMode ? "☀️Light" : "🌙Dark"}
+        </button>
+      </div>
       <div className="App-Products-Row">
         {products.map((value) => (
           <div key={value._id} className="App-Products-Box">
             <img 
               src={value.imgUrl || value.url || 'https://via.placeholder.com/350x350?text=No+Image'} 
               alt={value.name || 'Product Image'}
-              className="product-image"
+              className="product-image clickable-image"
+              onClick={() => handleImageClick(value._id)}
               onError={(e) => {
                 e.target.src = 'https://via.placeholder.com/350x350?text=No+Image';
-                onclick(e);
               }}
             />
             <h3>{value.name}</h3>
