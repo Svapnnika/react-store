@@ -11,11 +11,10 @@ export default function Footer() {
         <div className="footer-section">
           <h3>Types of Ceramics</h3>
           <ul>
-            <li><Link to="/ceramics/porcelain">Porcelain</Link></li>
-            <li><Link to="/ceramics/stoneware">Stoneware</Link></li>
-            <li><Link to="/ceramics/earthenware">Earthenware</Link></li>
-            <li><Link to="/ceramics/bone-china">Bone China</Link></li>
-            <li><Link to="/ceramics/terracotta">Terracotta</Link></li>
+            <li><Link to="/ceramics/By Material and Composition">Material and Composition</Link></li>
+            <li><Link to="/ceramics/Surface Decoration and Glazing">Surface Decoration and Glazing</Link></li>
+            <li><Link to="/ceramics/Cultural and Regional Orgin">Cultural and Regional Orgin</Link></li>
+            <li><Link to="/ceramics/Technical and Industrial">Technical and Industrial</Link></li>
           </ul>
         </div>
 
